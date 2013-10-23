@@ -32,7 +32,7 @@ To be consistent with the TMD+MD scheme of the |CM| cycles, I prefer to perform 
 .. |CM| replace:: \ *co*\MD
 
 
-.. figure:: Pictures/Webpage_protocol.jpg
+.. figure:: images/protocol.jpg
    :scale: 25 %
    
    Figure 1: Schematic Description of |CM|
