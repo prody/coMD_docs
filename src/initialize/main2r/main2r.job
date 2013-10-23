@@ -1,0 +1,40 @@
+#!/bin/bash
+#
+# your job's name
+#$ -N main2r_1
+#
+# shell for execution
+#$ -S /bin/bash
+#
+# SGE queue
+#$ -q parallel.q@@bahar12
+#
+# pe request
+#$ -pe fill_up 1
+#
+# work from current working directory
+#$ -cwd
+#
+# set output file
+#$ -o ./main2r_out
+#
+# set error file
+#$ -e ./main2r_err
+#
+# SGE allocated nodes
+# Prepare nodelist file for charmrun ...
+#
+#
+# show machines run on
+#
+# echo "machines used:"
+# cat $TMPDIR/machines
+#
+#
+export LD_LIBRARY_PATH="/usr/local/MATLAB/bin/glnxa64:/usr/local/MATLAB/sys/os/glnxa64:/usr/local/MATLAB/runtime/glnxa64"
+
+./main2r > main2r.out
+
+
+exit 0
+

@@ -1,0 +1,10 @@
+
+
+mol delete all
+mol load pdb chainA.pdb
+set chaina [atomselect top protein]
+$chaina writepdb chainAp.pdb
+
+set ligand [atomselect top "resname AP5"]
+$ligand writepdb ligand.pdb
+

@@ -1,0 +1,62 @@
+Autopsf: Updating structures
+Autopsf: Updating structures
+33
+reading topology file /usr/local/lib/vmd/plugins/noarch/tcl/autoionize1.2/ions.top
+
+>>>>>>       SOD and CLA Ions Topology File           <<<<<<<<<
+extracted from
+>>>>>>>>CHARMM22 All-Hydrogen Topology File for Proteins <<<<<<
+>>>>>>>>>>>>>>>>>>>>> August 1999 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+>>>>>>> Direct comments to Alexander D. MacKerell Jr. <<<<<<<<<
+>>>>>> 410-706-7442 or email: alex,mmiris.ab.umd.edu  <<<<<<<<<
+
+Created by CHARMM version 27 1
+
+Autoionize) Reading chainA_wb.psf/chainA_wb.pdb...
+clearing structure, preserving topology and aliases
+reading structure from psf file chainA_wb.psf
+reading coordinates from pdb file chainA_wb.pdb
+Autopsf: Updating structures
+Autopsf: Updating structures
+
+Autoionize) System net charge before adding ions: -3.9999968633055687e
+Autoionize) Desired ion concentration 0.5 mol/L
+Autoionize) Adding 70 Na and 66 Cl ions, total 136 ions
+Autoionize) Required min distance from molecule 5A
+Autoionize) Required min distance between ions 5A
+Autoionize) Output file prefix 'ionized'
+Autoionize) Obtained positions for 136 ions
+Autoionize) Tagged 136 water molecules for deleting
+Autoionize) Deleted 136 water molecules
+Autoionize) Adding 70 SOD and 66 CLA residues...
+building segment ION
+setting patch for first residue to NONE
+setting patch for last residue to NONE
+Info: generating structure...
+Info: segment complete.
+Autoionize) Randomizing ion positions...
+Autoionize) Assigned 70 Na coordinates
+Autoionize) Assigned 66 Cl coordinates
+Info: writing psf file ionized.psf
+total of 46557 atoms
+total of 32085 bonds
+total of 20483 angles
+total of 8921 dihedrals
+total of 541 impropers
+total of 212 cross-terms
+Info: psf file complete.
+Info: writing pdb file ionized.pdb
+Info: pdb file complete.
+Autoionize) Reloading the system with added ions...
+Autopsf: Updating structures
+Autopsf: Updating structures
+Autopsf: Updating structures
+
+Autoionize) System net charge after adding ions: 3.1366944313049316e-6e
+Autoionize) All done.
+Autopsf: Updating structures
+Autopsf: Updating structures
+Autopsf: Updating structures
+Autopsf: Updating structures
+>Main< (4AKE) 30 % 
+

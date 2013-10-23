@@ -1,0 +1,54 @@
+
+	mol delete all
+
+	#Final structure
+
+	mol load psf common/ionized.psf
+	mol addfile 500i/res.coor
+
+	set reference [atomselect top "name CA"]
+	
+	
+	mol load psf commonr/ionized.psf
+	
+	# Please change "f" here with respect to the number of cycles it required for your coMD run to converge.
+
+	set f 16
+	for {set i 1 } {$i < $f } { incr i } {
+		set j [expr $f-$i]
+		mol addfile tmdmr$j/res.coor
+	} 	
+
+	
+	mol addfile 500f/res.coor
+
+	set sel1 [atomselect top "name CA"]
+	
+	set sel2 [atomselect top "all"]
+	set sel3 [atomselect top "protein"]
+	
+	set num_steps [molinfo top get numframes]
+
+	for {set frame 0} {$frame < $num_steps} {incr frame} {
+
+                # get the correct frame
+                $sel1 frame $frame
+		$sel2 frame $frame
+		
+		
+                # compute the transformation
+                set trans_mat [measure fit $sel1 $reference]
+                # do the alignment
+                $sel2 move $trans_mat
+                
+
+
+        }
+	
+	#Generate transition dcd files
+	animate write dcd {transformationr.dcd} sel $sel2  waitfor all
+	animate write dcd {transformationr_CA.dcd} sel $sel1  waitfor all
+	animate write dcd {transformationr_prot.dcd} sel $sel3  waitfor all
+	exit
+
+	

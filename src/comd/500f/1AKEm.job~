@@ -1,0 +1,58 @@
+#!/bin/bash
+#
+
+# your job's name
+#$ -N minif
+# shell for execution
+#$ -S /bin/bash
+#
+# SGE queue
+#$ -q namd.q@@ibnew
+#
+# pe request
+#$ -pe namd 48 
+#
+# work from current working directory
+#$ -cwd
+#
+# set output file
+#$ -o ./1AKE_out
+#
+# set error file
+#$ -e ./1AKE_err
+#
+# SGE allocated nodes
+# Prepare nodelist file for charmrun ...
+#
+
+#
+# show machines run on
+#
+# echo "contents of temp:"
+# ls -al $TMPDIR/
+#echo "-- ENV ----------------------------"
+#env
+#echo "PE Hostfile = $PE_HOSTFILE"
+#cat $PE_HOSTFILE
+
+#echo "-----------------------------------"
+
+export NODELIST=$TMPDIR/namd2.nodelist
+echo "group main" > $NODELIST
+cat $PE_HOSTFILE | awk '{print "host " $1}' >> $NODELIST
+
+cp $NODELIST .
+
+#
+NAMD_BIN=/usr/local/namd_2.7_ibverbs
+export PATH=$NAMD_BIN:$PATH
+
+#
+# Ready ...
+#
+# MPIRUN=/usr/local/OFED/mpi/gcc/openmpi-1.2.2-1/bin/mpiexec
+#  $MPIRUN --mca pls_rsh_agent ssh --mca btl self,sm,openib -np 48 $NAMD 1AKEm.conf > 1AKE.log
+
+$NAMD_BIN/charmrun $NAMD_BIN/namd2 +p$NSLOTS ++nodelist $NODELIST 1AKEm.conf > 1AKE.log
+
+exit 0

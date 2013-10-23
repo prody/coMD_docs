@@ -1,0 +1,11 @@
+mol delete all
+
+#Final structure
+mol load psf common/ionized.psf
+mol addfile common2/res.coor
+
+set s1 [atomselect 0 "name CA"]
+$s1 writepdb targetr.pdb
+
+exit
+

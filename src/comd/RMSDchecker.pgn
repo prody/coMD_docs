@@ -1,0 +1,45 @@
+mol delete all
+
+mol load psf common/ionized.psf 
+mol addfile common2/res.coor
+
+# Conformers after minimization
+
+set sel1 [atomselect top "name CA"]
+set sel1a [atomselect top all]
+
+mol load psf commonr/ionized.psf 
+mol addfile common2r/res.coor
+
+set sel2 [atomselect top "name CA"]
+set sel2a [atomselect top all]
+
+set trans_mat [measure fit $sel2 $sel1]
+$sel2a move $trans_mat
+set rmsd [measure rmsd $sel2 $sel1]
+
+#Read the RMSD between the conformers at the end of the previous cycle
+
+set fp [open RMSDprev.dat r]
+set co [gets $fp line]
+close $fp
+
+#Set the status to 1 if RMSD has fallen bellow a 1.5A or the rate it changes has fallen bellow a 0.15A
+
+set op [open status.dat w]
+
+if { $rmsd< 1.5 || [expr abs($rmsd-$co)] < 0.15 } {
+puts $op 1
+} else {
+puts $op 0
+}
+
+close $op
+ 
+
+
+set fpn [open RMSDprev.dat w]
+puts $fpn $rmsd
+close $fpn
+
+exit

@@ -1,0 +1,28 @@
+mol delete all
+
+#Starting structure
+mol load psf common/ionized.psf
+#Last updated starting structure is in common2
+mol addfile common2/res.coor
+
+#Final structure
+mol load psf commonr/ionized.psf
+mol addfile common2r/res.coor
+
+
+set s1 [atomselect 0 "name CA"]
+set s2 [atomselect 0 "all"]
+set s3 [atomselect 1 "name CA"]
+
+set trans_mat [measure fit $s1 $s3]
+
+# Align the starting structure with the final structure
+
+$s2 move $trans_mat
+ 
+#Save the starting structure. CA only
+
+$s1 writepdb common2/starting.pdb
+
+exit
+

@@ -1,0 +1,7 @@
+
+
+mol delete all
+mol load pdb chainA.pdb
+set chaina [atomselect top protein]
+$chaina writepdb chainAp.pdb
+

@@ -1,0 +1,29 @@
+mol delete all
+mol load pdb B51.pdb
+set a [atomselect top all]
+
+set s1 [atomselect top "chain C and resid 5"]
+set s2 [atomselect top "chain A and resid 97"]
+
+set m1 [measure center $s1 weight mass]
+set m2 [measure center $s2 weight mass]
+
+#vecnorm [vecsub $m1 $m2]
+
+set c [measure center $a weight mass]
+$a moveby [vecsub {0 0 0} $c]
+
+set vec [vecsub $m1 $m2]
+set M [transvecinv $vec ]
+$a move $M
+
+set s1 [atomselect top "chain C and resid 5"]
+set s2 [atomselect top "chain A and resid 97"]
+
+set m1 [measure center $s1 weight mass]
+set m2 [measure center $s2 weight mass]
+
+set vec [vecsub $m1 $m2]
+
+
+

@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# your job's name
+#$ -N H1AKEm_1
+#
+# shell for execution
+#$ -S /bin/bash
+#
+# SGE queue
+#$ -q parallel.q@n121
+#
+# pe request
+#$ -pe fill_up 32
+#
+# work from current working directory
+#$ -cwd
+#
+# set output file
+#$ -o ./1AKEm_out
+#
+# set error file
+#$ -e ./1AKEm_err
+#
+# SGE allocated nodes
+# Prepare nodelist file for charmrun ...
+
+# Previous script
+# /usr/local/NAMD/NAMD_2.8_Linux-x86_64-multicore/namd2 molcom.conf > molcom.log
+
+
+
+namd2 +p$NSLOTS 1AKEm.conf > 1AKEm.log
+
+exit 0
+

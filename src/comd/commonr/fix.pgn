@@ -1,0 +1,6 @@
+set allatoms [atomselect top all]
+$allatoms set beta 0
+$allatoms set occupancy 0
+set sa [atomselect top "name CA"]
+$sa set beta 1
+$allatoms writepdb reffix.pdb

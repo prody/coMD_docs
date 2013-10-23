@@ -1,0 +1,16 @@
+mol delete all
+resetpsf
+package require psfgen
+ 
+readpsf chainAf.psf 
+readpsf chainBf.psf 
+readpsf chainCf.psf 
+
+coordpdb chainAf.pdb 
+coordpdb chainBf.pdb 
+coordpdb chainCf.pdb 
+
+
+ 
+writepsf B51.psf 
+writepdb B51.pdb

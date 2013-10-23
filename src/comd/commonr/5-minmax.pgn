@@ -1,0 +1,4 @@
+mol delete all
+mol load psf ionized.psf pdb ionized.pdb
+set ev [atomselect top all]
+measure minmax $ev

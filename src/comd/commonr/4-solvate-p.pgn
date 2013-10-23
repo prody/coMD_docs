@@ -1,0 +1,5 @@
+mol delete all
+resetpsf
+package require solvate
+solvate chainAp_autopsf.psf chainAp_autopsf.pdb -x 15 +x 15 -y 15 +y 15 -z 15 +z 15 -o 	chainA_wb
+
